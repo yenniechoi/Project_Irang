@@ -16,18 +16,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <link rel="stylesheet" href="sweetalert2.min.css">
 <script>
-$(document).ready(function(){
-	let message = "${msg}";
-	if (message !=""){
-		alert(message);
-		Swal.fire({
-			  title: 'message',
-			  icon: 'error'
-			})
-	}else{
-		
-	}
-})
+
 </script>
 </head>
 
@@ -35,7 +24,9 @@ $(document).ready(function(){
   <div class="container">
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto">
+      <div style="text-align:center;">
         <h4 class="mb-3">선생님 로그인</h4>
+        </div>
         <form action="/teacher/login" method="post" class="validation-form" novalidate>
 
           <div class="mb-3">
@@ -53,7 +44,7 @@ $(document).ready(function(){
               비밀번호를 입력해주세요.
             </div>
           </div>
-
+			<p style="color: red">${msg }</p>
           <div class="mb-4"></div>
           <button class="btn btn-lg btn-block" type="submit" >로그인</button>
         </form>

@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'KimjungchulGothic-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulGothic-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+#chlogbody {
+	color: #363636;
+	font-family: "KimjungchulGothic-Bold";
+	text-align: center;
+	
+}
+
+.chlog_title {
+	margin: 50px;
+	text-align: center;
+	font-size: 2.5em;
+	color: #363636;
+}
+
+#title{
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0) 65%, #A9CFE2 35%);
+}
+
+.everybtn,
+.yetbtn{
+	float: left;
+}
+
+.searchbtn, .everybtn, .yetbtn {
+	padding: 7px 10px;
+	background-color: #A9CFE2;
+	color: #363636;
+	border: 2px solid white;
+	cursor: pointer;
+	border-radius: 10px;
+}
+
+.search {
+	float: right;
+	
+}
+
+.chloglist {
+	margin-top: 50px;
+	margin-left: 4%;
+}
+
+.cont {
+	display: inline-block;
+/*     width: 200px; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    /* 여러 줄 자르기 추가 스타일 */
+    white-space: normal;
+    line-height: 1.2;
+    height: 3.6em;
+    text-align: left;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
