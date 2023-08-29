@@ -183,7 +183,7 @@ java, java script, jpa, spring
   </tr>
   <tr>
     <td> 최예은 </td>
-    <td> <a href="https://github.com/YeeBoss" target="_blank">YeeBoss</a> </td>
+    <td> <a href="https://github.com/yenniechoi" target="_blank">yenniechoi</a> </td>
     <td>학부모가 작성하는 그날의 아이 특이사항 (아이 일지) 작성, 댓글 작성, 상세보기, 아이 별 일지 전체리스트 기능 및 뷰페이지 담당 </td>
     <td> JAVA Spring JPA 연습 및 활용</td>
     <td>계획한 기능을 Spring을 통해 설계하는 방법에 대해 배웠다. 또한 기능 구현에 앞서 팀원과의 소통이 원활하게 이루어져야 프로젝트가 성공적으로 완성될 수 있음을 알게 되었다. </td>
