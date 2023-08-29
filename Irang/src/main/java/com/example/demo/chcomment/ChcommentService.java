@@ -34,7 +34,7 @@ public class ChcommentService {
 	// 일지 글번호로 검색 --> 일지 디테일에 한번에 띄울 거 
 	public ArrayList<ChcommentDto> getAll(int chlognum) {
 		Childlog vo = new Childlog(chlognum, null, null, "", "", 0);
-		ArrayList<Chcomment> list = (ArrayList<Chcomment>) dao.findByChlognum(vo);
+		ArrayList<Chcomment> list = (ArrayList<Chcomment>) dao.findByChlognumOrderByNumAsc(vo);
 		ArrayList<ChcommentDto> dtolist = new ArrayList<ChcommentDto>();
 		for (Chcomment entity:list) {
 			dtolist.add(new ChcommentDto(entity.getNum(), entity.getChlognum(), entity.getId(), entity.getName(), entity.getContent(), entity.getWdate()));

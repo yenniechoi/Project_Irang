@@ -10,6 +10,6 @@ import com.example.demo.childlog.Childlog;
 @Repository
 public interface ChcommentDao extends JpaRepository<Chcomment, Integer> {
 	// 일지 글번호로 검색 
-	ArrayList<Chcomment> findByChlognum(Childlog chlognum);
+	ArrayList<Chcomment> findByChlognumOrderByNumAsc(Childlog chlognum);
 
 }
