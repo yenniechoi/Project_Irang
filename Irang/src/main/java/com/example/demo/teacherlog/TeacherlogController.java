@@ -119,6 +119,10 @@ public class TeacherlogController {
 		System.out.println("className :" + className);
 		// 그 반 이름을 가져오기
 
+		String tImg = vo.getTeacherid().getProfile();
+		map.addAttribute("tImg", tImg);
+		// 선생님 이미지 가져오기
+
 		map.addAttribute("bodyview", "/WEB-INF/views/teacherlog/t-detail.jsp");
 		return "index";
 	}
@@ -135,6 +139,8 @@ public class TeacherlogController {
 	@GetMapping("/childDetail")
 	public String tChildDetail(int tlnum, ModelMap map) {
 		map.addAttribute("vo", service.getByTlnum(tlnum));
+		String tImg = service.getByTlnum(tlnum).getTeacherid().getProfile();
+		map.addAttribute("tImg", tImg);
 		map.addAttribute("bodyview", "/WEB-INF/views/teacherlog/t-detail.jsp");
 		return "index";
 	}
@@ -195,19 +201,19 @@ public class TeacherlogController {
 		boolean flag = false;
 		String delPath = path + tlnum;
 		File dir = new File(delPath);
-		System.out.println("dir:"+dir);
+		System.out.println("dir:" + dir);
 		File[] files = dir.listFiles();
-		
-		int num=0;
-		while(num < files.length) {
-			if(files[num].getAbsolutePath().equals(imgpath)) {
+
+		int num = 0;
+		while (num < files.length) {
+			if (files[num].getAbsolutePath().equals(imgpath)) {
 				files[num].delete();
 				flag = true;
 				break;
 			}
 			num++;
 		}
-		
+
 		service.deleteImg(tlnum, imgnum);
 		return flag;
 	}
@@ -218,11 +224,11 @@ public class TeacherlogController {
 	public boolean imgadd(int tlnum, int imgnum, MultipartFile imgfile) {
 		boolean flag = true;
 		MultipartFile x = imgfile;
-		System.out.println("imgpath :"+imgfile);
-		System.out.println("imgpath.getOriginalFilename() :"+imgfile.getOriginalFilename());
-		
+		System.out.println("imgpath :" + imgfile);
+		System.out.println("imgpath.getOriginalFilename() :" + imgfile.getOriginalFilename());
+
 		String fname = x.getOriginalFilename();
-		if(fname != null && !fname.equals("")) {
+		if (fname != null && !fname.equals("")) {
 			File newfile = new File(path + tlnum + "/" + fname);
 			try {
 				x.transferTo(newfile);
@@ -234,9 +240,9 @@ public class TeacherlogController {
 				e.printStackTrace();
 			}
 		}
-		// 서비스 추가해야해 
+		// 서비스 추가해야해
 		service.addImg(tlnum, imgnum, fname);
-		
+
 		return flag;
 	}
 
@@ -256,6 +262,28 @@ public class TeacherlogController {
 	public Map childDay(LocalDate tdate, Child childid) {
 		Map map = new HashMap();
 		ArrayList<TeacherlogDto> list = service.getByDayAndChildid(tdate, childid);
+		map.put("list", list);
+		return map;
+	}
+
+	// 특정 쌤이 쓴 리스트 : 월별로 검색
+	@GetMapping("/month")
+	@ResponseBody
+	public Map month(LocalDate start, LocalDate end, Teacher teacherid) {
+		Map map = new HashMap();
+		ArrayList<TeacherlogDto> list = service.getByMonthAndTeacherid(start, end, teacherid);
+		map.put("list", list);
+		return map;
+	}
+
+	// 보호자 입장 전체 리스트 : 월별로 검색
+	@GetMapping("/childMonth")
+	@ResponseBody
+	public Map childMonth(LocalDate start, LocalDate end, Child childid) {
+		Map map = new HashMap();
+		ArrayList<TeacherlogDto> list = service.getByMonthAndChildid(start, end, childid);
+		System.out.println("한달 검색");
+		System.out.println(list);
 		map.put("list", list);
 		return map;
 	}
